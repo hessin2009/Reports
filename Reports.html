@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقرير تنفيذ عمل مدرسي</title>
+
+<style>
+:root {
+  --primary: #006c5b;
+  --primary-light: #0f8f78;
+  --secondary: #1b4965;
+  --secondary-light: #2f6f91;
+  --accent: #d6a13d;
+  --bg: #eef3f6;
+  --card: #ffffff;
+  --text: #1f2d36;
+  --muted: #6f7f89;
+  --border: #d9e2e7;
+  --soft: #f7fafb;
+  --danger: #b42318;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", "Tahoma", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  line-height: 1.8;
+}
+
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: #fff;
+  border-radius: 0 0 24px 24px;
+  padding: 26px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  top: -90px;
+  right: -80px;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: rgba(214, 161, 61, 0.16);
+  bottom: -70px;
+  left: -40px;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.ministry-box,
+.school-box {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.ministry-box p,
+.school-box p {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.title-box {
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.20);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.title-box h1 {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.title-box p {
+  margin: 6px 0 0;
+  color: rgba(255,255,255,0.82);
+  font-size: 13px;
+}
+
+.identity-line {
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+  border-radius: 0 0 14px 14px;
+  margin-bottom: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(25, 73, 101, 0.07);
+}
+
+.card-title {
+  background: linear-gradient(135deg, #f2faf7, #f3f7fa);
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 800;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title span {
+  background: var(--primary);
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  font-size: 15px;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--secondary);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  background: var(--soft);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: "Arial", "Tahoma", sans-serif;
+  direction: rtl;
+}
+
+textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 108, 91, 0.12);
+}
+
+.note {
+  background: #f8fbfa;
+  border-right: 4px solid var(--primary);
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.list-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row-item {
+  display: grid;
+  grid-template-columns: 38px 1fr 38px;
+  gap: 8px;
+  align-items: center;
+}
+
+.row-number {
+  background: var(--secondary);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.remove-btn {
+  border: none;
+  background: #fff2f0;
+  color: var(--danger);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-btn {
+  margin-top: 12px;
+  border: 2px dashed var(--primary-light);
+  background: #f1fbf8;
+  color: var(--primary);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.upload-box {
+  border: 2px dashed var(--border);
+  background: var(--soft);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+}
+
+.upload-box input {
+  background: #fff;
+}
+
+.preview-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+  gap: 10px;
+}
+
+.preview-item {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  aspect-ratio: 1;
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-item button {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  border: none;
+  background: rgba(180, 35, 24, 0.92);
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.signature-box {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+  padding: 16px;
+}
+
+.signature-box h4 {
+  margin: 0 0 10px;
+  color: var(--secondary);
+}
+
+.signature-line {
+  height: 42px;
+  border-bottom: 1.5px dashed var(--muted);
+  margin: 8px 0 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+
+button.action {
+  border: none;
+  border-radius: 11px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: "Arial", "Tahoma", sans-serif;
+  cursor: pointer;
+}
+
+.print-btn {
+  background: var(--primary);
+  color: #fff;
+}
+
+.clear-btn {
+  background: #fff;
+  color: var(--secondary);
+  border: 1.5px solid var(--border) !important;
+}
+
+.save-btn {
+  background: var(--secondary);
+  color: #fff;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 20px 0 10px;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .page {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .actions,
+  .add-btn,
+  .remove-btn,
+  .upload-box,
+  .preview-item button {
+    display: none !important;
+  }
+
+  .header {
+    border-radius: 0;
+  }
+
+  .card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  input,
+  textarea,
+  select {
+    border: none;
+    background: transparent;
+    padding: 4px 0;
+  }
+
+  textarea {
+    min-height: 70px;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@media (max-width: 800px) {
+  .header-content,
+  .grid-2,
+  .grid-3,
+  .signature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title-box h1 {
+    font-size: 22px;
+  }
+
+  .page {
+    padding: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="header-content">
+
+    <div class="ministry-box">
+      <p><strong>المملكة العربية السعودية</strong></p>
+      <p>وزارة التعليم</p>
+      <p>إدارة التعليم:</p>
+      <input type="text" placeholder="اكتب الإدارة التعليمية">
+    </div>
+
+    <div class="title-box">
+      <div class="badge">نموذج توثيق رسمي</div>
+      <h1>تقرير تنفيذ عمل مدرسي</h1>
+      <p>نموذج عام لتوثيق البرامج والمبادرات والأنشطة والإجراءات المدرسية</p>
+    </div>
+
+    <div class="school-box">
+      <p>اسم المدرسة:</p>
+      <input type="text" placeholder="اكتب اسم المدرسة">
+      <p>المرحلة الدراسية:</p>
+      <input type="text" placeholder="اكتب المرحلة الدراسية">
+    </div>
+
+  </div>
+</div>
+
+<div class="identity-line"></div>
+
+<div class="page">
+
+  <div class="card">
+    <div class="card-title"><span>1</span> البيانات الأساسية</div>
+    <div class="card-body">
+      <div class="grid-3">
+        <div class="field">
+          <label>عنوان التقرير</label>
+          <input type="text" placeholder="مثال: برنامج التوعية بأضرار المخدرات">
+        </div>
+
+        <div class="field">
+          <label>نوع العمل المنفذ</label>
+          <select>
+            <option>برنامج إرشادي</option>
+            <option>برنامج نشاط طلابي</option>
+            <option>مبادرة مدرسية</option>
+            <option>دورة تدريبية</option>
+            <option>ورشة عمل</option>
+            <option>تطبيق استراتيجية تدريس</option>
+            <option>إذاعة مدرسية</option>
+            <option>معرض مدرسي</option>
+            <option>اجتماع</option>
+            <option>شراكة مجتمعية</option>
+            <option>برنامج توعوي</option>
+            <option>برنامج علاجي</option>
+            <option>برنامج إثرائي</option>
+            <option>أخرى</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>مجال التنفيذ</label>
+          <select>
+            <option>التوجيه الطلابي</option>
+            <option>النشاط الطلابي</option>
+            <option>التعليم والتعلم</option>
+            <option>التطوير المهني</option>
+            <option>الشراكة المجتمعية</option>
+            <option>الأمن والسلامة</option>
+            <option>الصحة المدرسية</option>
+            <option>القيم والسلوك</option>
+            <option>التحصيل الدراسي</option>
+            <option>الجودة والاعتماد المدرسي</option>
+            <option>مجال آخر</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>تاريخ التنفيذ</label>
+          <input type="date">
+        </div>
+
+        <div class="field">
+          <label>وقت التنفيذ</label>
+          <input type="text" placeholder="مثال: الحصة الثالثة / 9:30 صباحًا">
+        </div>
+
+        <div class="field">
+          <label>مكان التنفيذ</label>
+          <input type="text" placeholder="مثال: المسرح المدرسي / الفصول / الساحة">
+        </div>
+
+        <div class="field">
+          <label>الجهة المنفذة</label>
+          <input type="text" placeholder="مثال: التوجيه الطلابي / النشاط الطلابي">
+        </div>
+
+        <div class="field">
+          <label>الفئة المستهدفة</label>
+          <input type="text" placeholder="مثال: الطلاب / المعلمون / أولياء الأمور">
+        </div>
+
+        <div class="field">
+          <label>عدد المستفيدين</label>
+          <input type="number" placeholder="اكتب العدد">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>2</span> أهداف التنفيذ</div>
+    <div class="card-body">
+      <div class="note">
+        اكتب الأهداف التي يسعى البرنامج أو المبادرة أو النشاط إلى تحقيقها، ويفضل أن تكون واضحة وقابلة للقياس.
+      </div>
+
+      <div id="goalsList" class="list-area" style="margin-top: 14px;">
+        <div class="row-item">
+          <div class="row-number">1</div>
+          <input type="text" placeholder="الهدف الأول">
+          <button class="remove-btn" onclick="removeRow(this)">×</button>
+        </div>
+      </div>
+
+      <button class="add-btn" onclick="addGoal()">+ إضافة هدف</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>3</span> وصف التنفيذ وخطوات العمل</div>
+    <div class="card-body">
+      <div class="field">
+        <label>وصف مختصر للتنفيذ</label>
+        <textarea placeholder="اكتب وصفًا واضحًا لما تم تنفيذه، مع توضيح آلية التنفيذ ومشاركة الفئة المستهدفة."></textarea>
+      </div>
+
+      <div class="field" style="margin-top: 14px;">
+        <label>خطوات التنفيذ</label>
+        <textarea placeholder="مثال:
+1. الإعداد والتخطيط.
+2. تحديد الفئة المستهدفة.
+3. تجهيز المواد والأدوات.
+4. تنفيذ البرنامج.
+5. توثيق الشواهد.
+6. قياس الأثر.
+7. رفع التقرير."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>4</span> مؤشرات النجاح وقياس الأثر</div>
+    <div class="card-body">
+      <div class="grid-2">
+        <div class="field">
+          <label>مؤشرات النجاح</label>
+          <textarea placeholder="مثال: عدد المستفيدين، مستوى التفاعل، نسبة الحضور، تحقق الأهداف، رضا المستفيدين."></textarea>
+        </div>
+
+        <div class="field">
+          <label>أثر التنفيذ</label>
+          <textarea placeholder="اكتب أثر البرنامج أو النشاط على الفئة المستهدفة أو على البيئة المدرسية."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>5</span> التحديات والمعالجات</div>
+    <div class="card-body">
+      <div class="grid-2">
+        <div class="field">
+          <label>أبرز التحديات</label>
+          <textarea placeholder="اكتب أبرز التحديات التي ظهرت أثناء التخطيط أو التنفيذ."></textarea>
+        </div>
+
+        <div class="field">
+          <label>المعالجات المقترحة أو المنفذة</label>
+          <textarea placeholder="اكتب الحلول والإجراءات التي تم اتخاذها لمعالجة التحديات."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>6</span> التوصيات</div>
+    <div class="card-body">
+      <div class="field">
+        <label>التوصيات والمقترحات التطويرية</label>
+        <textarea placeholder="مثال: تكرار البرنامج، توسيع الفئة المستهدفة، تعزيز الشراكة مع الأسرة، تطوير آلية التوثيق."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>7</span> الشواهد والمرفقات</div>
+    <div class="card-body">
+      <div class="upload-box">
+        <p><strong>إرفاق صور الشواهد</strong></p>
+        <p style="color: var(--muted); font-size: 13px;">
+          يمكنك إرفاق صور من تنفيذ البرنامج أو المبادرة، وستظهر داخل التقرير قبل الطباعة.
+        </p>
+        <input type="file" accept="image/*" multiple onchange="previewImages(event)">
+      </div>
+
+      <div id="previewGrid" class="preview-grid"></div>
+
+      <div class="field" style="margin-top: 16px;">
+        <label>روابط أو مرفقات إضافية</label>
+        <textarea placeholder="اكتب روابط الاستبانة، ملف الحضور، المطويات، أو أي مرفقات أخرى."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span>8</span> الاعتماد والتوقيعات</div>
+    <div class="card-body">
+      <div class="signature-grid">
+        <div class="signature-box">
+          <h4>معد التقرير</h4>
+          <input type="text" placeholder="الاسم">
+          <div class="signature-line"></div>
+          <small>التوقيع</small>
+        </div>
+
+        <div class="signature-box">
+          <h4>المسؤول المنفذ</h4>
+          <input type="text" placeholder="الاسم">
+          <div class="signature-line"></div>
+          <small>التوقيع</small>
+        </div>
+
+        <div class="signature-box">
+          <h4>مدير المدرسة</h4>
+          <input type="text" placeholder="الاسم">
+          <div class="signature-line"></div>
+          <small>الاعتماد</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="action print-btn" onclick="window.print()">طباعة / حفظ PDF</button>
+    <button class="action save-btn" onclick="saveData()">حفظ البيانات داخل الجهاز</button>
+    <button class="action clear-btn" onclick="clearForm()">مسح البيانات</button>
+  </div>
+
+  <div class="footer">
+    تم إعداد هذا النموذج لتوثيق الأعمال المدرسية والبرامج والمبادرات والشواهد، مع إمكانية حفظه محليًا على الجهاز.
+  </div>
+
+</div>
+
+<script>
+function addGoal() {
+  const list = document.getElementById("goalsList");
+  const count = list.children.length + 1;
+
+  const row = document.createElement("div");
+  row.className = "row-item";
+  row.innerHTML = `
+    <div class="row-number">${count}</div>
+    <input type="text" placeholder="اكتب الهدف">
+    <button class="remove-btn" onclick="removeRow(this)">×</button>
+  `;
+
+  list.appendChild(row);
+}
+
+function removeRow(button) {
+  const list = document.getElementById("goalsList");
+
+  if (list.children.length === 1) {
+    alert("يجب أن يبقى هدف واحد على الأقل.");
+    return;
+  }
+
+  button.parentElement.remove();
+  updateNumbers();
+}
+
+function updateNumbers() {
+  const numbers = document.querySelectorAll("#goalsList .row-number");
+  numbers.forEach((number, index) => {
+    number.textContent = index + 1;
+  });
+}
+
+function previewImages(event) {
+  const files = event.target.files;
+  const grid = document.getElementById("previewGrid");
+
+  Array.from(files).forEach(file => {
+    if (!file.type.startsWith("image/")) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      const item = document.createElement("div");
+      item.className = "preview-item";
+      item.innerHTML = `
+        <img src="${e.target.result}" alt="شاهد مرفق">
+        <button onclick="this.parentElement.remove()">×</button>
+      `;
+      grid.appendChild(item);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function saveData() {
+  const inputs = document.querySelectorAll("input, textarea, select");
+  const data = [];
+
+  inputs.forEach(input => {
+    if (input.type !== "file") {
+      data.push({
+        tag: input.tagName,
+        type: input.type,
+        value: input.value
+      });
+    }
+  });
+
+  localStorage.setItem("schoolReportData", JSON.stringify(data));
+  alert("تم حفظ البيانات داخل المتصفح على هذا الجهاز.");
+}
+
+function loadData() {
+  const saved = localStorage.getItem("schoolReportData");
+  if (!saved) return;
+
+  const data = JSON.parse(saved);
+  const inputs = document.querySelectorAll("input, textarea, select");
+  let index = 0;
+
+  inputs.forEach(input => {
+    if (input.type !== "file" && data[index]) {
+      input.value = data[index].value;
+      index++;
+    }
+  });
+}
+
+function clearForm() {
+  const confirmClear = confirm("هل تريد مسح جميع البيانات؟");
+
+  if (!confirmClear) return;
+
+  const inputs = document.querySelectorAll("input, textarea, select");
+
+  inputs.forEach(input => {
+    if (input.type === "file") {
+      input.value = "";
+    } else if (input.tagName === "SELECT") {
+      input.selectedIndex = 0;
+    } else {
+      input.value = "";
+    }
+  });
+
+  document.getElementById("previewGrid").innerHTML = "";
+  localStorage.removeItem("schoolReportData");
+
+  alert("تم مسح البيانات بنجاح.");
+}
+
+window.onload = loadData;
+</script>
+
+</body>
+</html>
